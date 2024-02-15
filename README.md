@@ -1,4 +1,4 @@
-# clavier vocale
+# voice keyboard
 
 an interface for nerd-dictation in gtk
 

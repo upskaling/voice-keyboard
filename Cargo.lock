@@ -831,16 +831,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "stt-clavier"
-version = "0.2.0"
-dependencies = [
- "glib 0.10.3",
- "gtk",
- "psutil",
- "single-instance",
-]
-
-[[package]]
 name = "syn"
 version = "1.0.109"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1005,6 +995,16 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+[[package]]
+name = "voice-keyboard"
+version = "0.2.0"
+dependencies = [
+ "glib 0.10.3",
+ "gtk",
+ "psutil",
+ "single-instance",
+]
 
 [[package]]
 name = "widestring"
