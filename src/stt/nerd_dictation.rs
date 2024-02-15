@@ -8,6 +8,7 @@ use std::process::Command;
 // suspend             Suspend the dictation process.
 // resume              Resume the dictation process.
 
+#[derive(Debug, Copy, Clone)]
 pub struct NerdDictation {}
 
 /** récupérer le pid du processus */
@@ -40,6 +41,7 @@ fn get_pid_paused(process: Result<Process, ProcessError>, process_name: &str) ->
     None
 }
 
+#[allow(dead_code)]
 impl NerdDictation {
     pub fn new() -> Self {
         NerdDictation {}
@@ -71,20 +73,23 @@ impl NerdDictation {
         }
     }
 
-    // /** arrêter le programme */
-    // pub fn stop(&self) {
-    //     if self.is_running() {
-    //         Command::new("nerd-dictation").arg("end").spawn().unwrap();
-    //     }
-    // }
+    /** arrêter le programme */
+    pub fn stop(&self) {
+        if self.is_running() {
+            Command::new("nerd-dictation")
+                .arg("end")
+                .output()
+                .expect("nerd-dictation end failed");
+        }
+    }
 
     /** suspendre le programme */
     pub fn suspend(&self) {
         if self.is_running() {
             Command::new("nerd-dictation")
                 .arg("suspend")
-                .spawn()
-                .unwrap();
+                .output()
+                .expect("nerd-dictation suspend failed");
         }
     }
 
@@ -93,8 +98,8 @@ impl NerdDictation {
         if self.is_running() {
             Command::new("nerd-dictation")
                 .arg("resume")
-                .spawn()
-                .unwrap();
+                .output()
+                .expect("nerd-dictation resume failed");
         }
     }
 }
